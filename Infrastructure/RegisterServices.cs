@@ -1,5 +1,7 @@
 ﻿using Application.Abstraction;
+using Application.Repositories;
 using Infrastructure.Data;
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,8 @@ namespace Infrastructure
             services.AddDbContext<IRetailingOrderingSystemDbContext, RetailingOrderingSystemDbContext>(options =>
                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
             );
+
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             return services;
         }
