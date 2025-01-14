@@ -1,0 +1,1 @@
+# RetailingOrderingSystem.Core.Api
