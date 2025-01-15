@@ -19,6 +19,7 @@ namespace Infrastructure.Data
        public DbSet<Category> Categories { get; set; }
        public DbSet<Order> Orders { get; set; }
        public DbSet<OrderDetail> OrderDetails { get; set; }
+       public DbSet<ProductThumbnail> ProductThumbnails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

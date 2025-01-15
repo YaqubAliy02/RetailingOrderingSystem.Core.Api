@@ -10,7 +10,9 @@ namespace Application.Abstraction
         DbSet<Category> Categories { get; set; }
         DbSet<Order> Orders { get; set; }
         DbSet<OrderDetail> OrderDetails { get; set; }
+        DbSet<ProductThumbnail> ProductThumbnails { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }
+
 
