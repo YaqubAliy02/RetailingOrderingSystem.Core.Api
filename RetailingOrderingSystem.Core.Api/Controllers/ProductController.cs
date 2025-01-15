@@ -1,5 +1,6 @@
 ﻿using Application.UseCases.Products.Command;
 using Application.UserCases.Products.Command;
+using Application.UserCases.Products.Query;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +33,12 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         public async Task<IActionResult> DeleteProductByIdAsync([FromQuery] DeleteProductCommand command)
         {
             return await this.mediator.Send(command);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetAllProductsAsync()
+        {
+            return await this.mediator.Send(new GetAllProductQuery());
         }
     }
 }
