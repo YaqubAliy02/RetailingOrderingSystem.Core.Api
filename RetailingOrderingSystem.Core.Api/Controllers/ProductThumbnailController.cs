@@ -19,5 +19,11 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         {
             return await this.mediator.Send(command);
         }
+
+        [HttpDelete("[action]")]
+        public async Task<IActionResult> DeleteProductThumbnail([FromQuery] DeleteProductThumbnailCommand command)
+        {
+            return await this.mediator.Send(command);
+        }
     }
 }

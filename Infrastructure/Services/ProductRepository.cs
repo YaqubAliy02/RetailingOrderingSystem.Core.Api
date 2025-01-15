@@ -40,7 +40,8 @@ namespace Infrastructure.Services
             return this.context.Products
                 .Where(expression)
                 .Include(p => p.Category)
-                .Include(p => p.OrderDetails);
+                .Include(p => p.OrderDetails)
+                .Include(p => p.ProductThumbnails);
         }
 
         public async Task<Product> GetByIdAsync(Guid id)
@@ -48,7 +49,9 @@ namespace Infrastructure.Services
             return await this.context.Products
                 .Where(p => p.Id.Equals(id))
                 .Include(p => p.Category)
-                .Include(p => p.OrderDetails).FirstOrDefaultAsync();
+                .Include(p => p.OrderDetails)
+                .Include(p => p.ProductThumbnails)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<Product> UpdateAsync(Product product)

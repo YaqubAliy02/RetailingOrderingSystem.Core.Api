@@ -23,12 +23,21 @@ namespace Application.Mappings
                 options => options.MapFrom(src => src.ThumbnailsId
                 .Select(x => new ProductThumbnail() { Id = x })));
 
+            CreateMap<UpdateProductCommand, Product>()
+                .ForMember(destination => destination.ProductThumbnails, option => option.Ignore());
+
             CreateMap<Product, UpdateProductDTO>()
                 .ForMember(destination => destination.ThumbnailsId,
                 options => options.MapFrom(src => src.ProductThumbnails.Select(p => p.Id)))
                 .ForMember(destination => destination.CategoryId, 
                 options => options.MapFrom(src => src.Category.Id)).ReverseMap();
-            CreateMap<Product, GetProductDto>();
+
+            CreateMap<Product, GetProductDto>()
+               .ForMember(destination => destination.ThumbnailsId,
+                options => options.MapFrom(src => src.ProductThumbnails.Select(p => p.Id)))
+                .ForMember(destination => destination.CategoryId,
+                options => options.MapFrom(src => src.Category.Id));
+
         }
     }
 }

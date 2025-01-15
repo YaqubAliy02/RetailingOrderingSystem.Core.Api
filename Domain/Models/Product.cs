@@ -11,7 +11,7 @@ namespace Domain.Models
         public int Stock { get; set; }
         public Guid CategoryId { get; set; }
         public Category Category { get; set; }
-        public ICollection<OrderDetail> OrderDetails { get; set; }
-        public ICollection<ProductThumbnail> ProductThumbnails { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+        public ICollection<ProductThumbnail> ProductThumbnails { get; set; } = new List<ProductThumbnail>();
     }
 }

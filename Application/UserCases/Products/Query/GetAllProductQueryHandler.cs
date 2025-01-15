@@ -1,6 +1,9 @@
-﻿using Application.Repositories;
+﻿using Application.DTOs.Products;
+using Application.Repositories;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.UserCases.Products.Query
 {
@@ -8,10 +11,12 @@ namespace Application.UserCases.Products.Query
     public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQuery, IActionResult>
     {
         private readonly IProductRepository productRepository;
-
-        public GetAllProductQueryHandler(IProductRepository productRepository)
+        private readonly IMapper mapper;
+        public GetAllProductQueryHandler(IProductRepository productRepository, 
+            IMapper mapper)
         {
             this.productRepository = productRepository;
+            this.mapper = mapper;
         }
 
         public async Task<IActionResult> Handle(GetAllProductQuery request, CancellationToken cancellationToken)
@@ -21,7 +26,12 @@ namespace Application.UserCases.Products.Query
             if(products is null)
                 return new NotFoundObjectResult("No products found");
 
-            return new OkObjectResult(products);
+            var productList = await products.ToListAsync();
+
+            var productDto = this.mapper.Map<List<GetProductDto>>(productList);
+
+            return new OkObjectResult(productDto);
         }
     }
 }
+
