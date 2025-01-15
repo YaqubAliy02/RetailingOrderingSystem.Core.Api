@@ -1,6 +1,8 @@
 ﻿using Application.Abstraction;
 using Application.Repositories;
+using Infrastracture.Services;
 using Infrastructure.Data;
+using Infrastructure.External.AWSS3;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,7 +20,8 @@ namespace Infrastructure
             );
 
             services.AddScoped<IProductRepository, ProductRepository>();
-
+            services.AddScoped<IProductThumbnailRepository, ProductThumbnailRepository>();
+            services.AddScoped<IAWSStorage, AWSStorage>();
             return services;
         }
     }
