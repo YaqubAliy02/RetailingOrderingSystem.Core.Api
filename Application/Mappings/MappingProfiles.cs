@@ -28,6 +28,7 @@ namespace Application.Mappings
                 options => options.MapFrom(src => src.ProductThumbnails.Select(p => p.Id)))
                 .ForMember(destination => destination.CategoryId, 
                 options => options.MapFrom(src => src.Category.Id)).ReverseMap();
+            CreateMap<Product, GetProductDto>();
         }
     }
 }
