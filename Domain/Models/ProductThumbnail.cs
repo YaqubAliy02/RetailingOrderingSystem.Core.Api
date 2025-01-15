@@ -1,4 +1,6 @@
-﻿namespace Domain.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Domain.Models
 {
     public class ProductThumbnail
     {
@@ -8,7 +10,8 @@
         public long Size { get; set; }
         public string Awss3Uri { get; set; }
         public Guid ProductId { get; set; }
-        public virtual Product Product { get; set; }
+        [JsonIgnore]
+        public  Product Product { get; set; }
         public DateTimeOffset UploadedDate { get; set; }
     }
 }

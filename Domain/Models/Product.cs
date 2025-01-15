@@ -1,4 +1,6 @@
-﻿namespace Domain.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Domain.Models
 {
     public class Product
     {
@@ -8,7 +10,8 @@
         public string Description { get; set; }
         public int Stock { get; set; }
         public Guid CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public Category Category { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
+        public ICollection<ProductThumbnail> ProductThumbnails { get; set; }
     }
 }

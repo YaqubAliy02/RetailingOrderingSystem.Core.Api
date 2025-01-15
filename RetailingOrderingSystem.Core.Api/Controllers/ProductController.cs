@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using Application.UseCases.Products.Command;
 using Application.UserCases.Products.Command;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +20,12 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         {
             var result = await this.mediator.Send(command);
             return Ok(result);
+        }
+
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateProductByIdAsync([FromBody] UpdateProductCommand command)
+        {
+            return await this.mediator.Send(command);
         }
     }
 }

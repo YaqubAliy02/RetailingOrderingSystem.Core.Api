@@ -58,7 +58,7 @@ namespace Infrastructure.External.AWSS3
 
             await _s3Client.PutObjectAsync(uploadRequest);
 
-            return $"https://{_bucketName}.s3.amazonaws.com/{fileName}";
+            return $"http://{_bucketName}.s3.amazonaws.com/{fileName}";
         }
 
         public async Task DeleteFileAsync(string fileName)
@@ -102,7 +102,7 @@ namespace Infrastructure.External.AWSS3
                         FileName = s3Object.Key,
                         ContentType = metadataResponse.Headers.ContentType,
                         Size = metadataResponse.Headers.ContentLength,
-                        Awss3Uri = $"https://{_bucketName}.s3.amazonaws.com/{s3Object.Key}",
+                        Awss3Uri = $"http://{_bucketName}.s3.amazonaws.com/{s3Object.Key}",
                         UploadedDate = metadataResponse.LastModified.Date,
                     });
                 }
