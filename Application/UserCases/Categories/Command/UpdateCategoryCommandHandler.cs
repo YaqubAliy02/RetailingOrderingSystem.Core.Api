@@ -4,7 +4,7 @@ using Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Application.UseCases.Categories.Command
+namespace Application.UserCases.Categories.Command
 {
     public class UpdateCategoryCommand : IRequest<IActionResult>
     {
@@ -27,8 +27,8 @@ namespace Application.UseCases.Categories.Command
 
         public async Task<IActionResult> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
-            Category category = this.mapper.Map<Category>(request);
-            category = await this.categoryRepository.UpdateAsync(category);
+            Category category = mapper.Map<Category>(request);
+            category = await categoryRepository.UpdateAsync(category);
 
             if (category is null)
                 return new NotFoundObjectResult("Category is not found to complete update operation!");

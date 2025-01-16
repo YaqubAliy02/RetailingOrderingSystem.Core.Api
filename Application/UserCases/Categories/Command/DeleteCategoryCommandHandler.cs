@@ -3,7 +3,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Application.UseCases.Categories.Command
+namespace Application.UserCases.Categories.Command
 {
     public class DeleteCategoryCommand : IRequest<IActionResult>
     {
@@ -24,7 +24,7 @@ namespace Application.UseCases.Categories.Command
 
         public async Task<IActionResult> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
         {
-            bool isDelete = await this.categoryRepository.DeleteAsync(request.Id);
+            bool isDelete = await categoryRepository.DeleteAsync(request.Id);
 
             return isDelete ? new OkObjectResult("Category is deleted successfully") :
                 new NotFoundObjectResult("Category is not found to complete delete operation!");

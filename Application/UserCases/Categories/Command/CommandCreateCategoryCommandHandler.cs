@@ -5,7 +5,7 @@ using Domain.Models;
 using FluentValidation;
 using MediatR;
 
-namespace Application.UseCases.Categories.Command
+namespace Application.UserCases.Categories.Command
 {
     public class CreateCategoryCommand : IRequest<ResponseCore<CreateCategoryCommandHandlerResult>>
     {
@@ -33,8 +33,8 @@ namespace Application.UseCases.Categories.Command
         {
             var result = new ResponseCore<CreateCategoryCommandHandlerResult>();
 
-            Category category = this.mapper.Map<Category>(request);
-            var validationResult = this.validator.Validate(category);
+            Category category = mapper.Map<Category>(request);
+            var validationResult = validator.Validate(category);
 
             if (!validationResult.IsValid)
             {
@@ -52,9 +52,9 @@ namespace Application.UseCases.Categories.Command
                 return result;
             }
 
-            category = await this.categoryRepository.AddAsync(category);
+            category = await categoryRepository.AddAsync(category);
 
-            result.Result = this.mapper.Map<CreateCategoryCommandHandlerResult>(category);
+            result.Result = mapper.Map<CreateCategoryCommandHandlerResult>(category);
             result.StatusCode = 200;
 
             return result;

@@ -1,4 +1,4 @@
-﻿using Application.UseCases.Categories.Command;
+﻿using Application.UserCases.Categories.Command;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
