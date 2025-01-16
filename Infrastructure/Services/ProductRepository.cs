@@ -58,7 +58,7 @@ namespace Infrastructure.Services
         {
             var existingProduct = this.context.Products.Find(product.Id);
 
-            if (existingProduct is not null) 
+            if (existingProduct is not null)
                 this.context.Products.Update(product);
 
             var result = await this.context.SaveChangesAsync();

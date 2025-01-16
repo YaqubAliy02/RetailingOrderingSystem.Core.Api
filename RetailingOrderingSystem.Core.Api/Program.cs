@@ -1,8 +1,5 @@
-using Infrastructure;
 using Application;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Infrastructure;
 using Microsoft.OpenApi.Models;
 internal class Program
 {

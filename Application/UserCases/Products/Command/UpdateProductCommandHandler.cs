@@ -51,7 +51,7 @@ namespace Application.UseCases.Products.Command
                 return new BadRequestObjectResult(validationResult);
 
             var updatedProduct = await productRepository.UpdateAsync(existingProduct);
-            var productDto = mapper.Map<UpdateProductDTO>(updatedProduct);    
+            var productDto = mapper.Map<UpdateProductDTO>(updatedProduct);
             return new OkObjectResult(updatedProduct);
         }
     }

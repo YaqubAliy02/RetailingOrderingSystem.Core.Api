@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 using RetailingOrderingSystem.Core.Api.Filters;
 
 namespace RetailingOrderingSystem.Core.Api.Controllers
@@ -14,4 +13,4 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         protected IMapper Mapper => this.mapper ?? HttpContext
             .RequestServices.GetRequiredService<IMapper>();
     }
-}   
+}

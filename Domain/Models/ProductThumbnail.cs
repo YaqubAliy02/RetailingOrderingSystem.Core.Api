@@ -11,7 +11,7 @@ namespace Domain.Models
         public string Awss3Uri { get; set; }
         public Guid ProductId { get; set; }
         [JsonIgnore]
-        public  Product Product { get; set; }
+        public Product Product { get; set; }
         public DateTimeOffset UploadedDate { get; set; }
     }
 }

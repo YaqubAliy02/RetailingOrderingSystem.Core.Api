@@ -12,7 +12,7 @@ namespace Application.UserCases.Products.Query
     {
         private readonly IProductRepository productRepository;
         private readonly IMapper mapper;
-        public GetAllProductQueryHandler(IProductRepository productRepository, 
+        public GetAllProductQueryHandler(IProductRepository productRepository,
             IMapper mapper)
         {
             this.productRepository = productRepository;
@@ -23,7 +23,7 @@ namespace Application.UserCases.Products.Query
         {
             var products = await productRepository.GetAllAsync(x => true);
 
-            if(products is null)
+            if (products is null)
                 return new NotFoundObjectResult("No products found");
 
             var productList = await products.ToListAsync();

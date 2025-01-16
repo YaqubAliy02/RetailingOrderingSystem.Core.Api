@@ -44,6 +44,6 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         public async Task<IActionResult> GetProductByIdAsync([FromQuery] GetProductByIdAsyncQuery getProductByIdAsyncQuery)
         {
             return await this.mediator.Send(getProductByIdAsyncQuery);
-        } 
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Application.UserCases.ProductThumbnails.Command
     public class CreateProductThumbnailCommand : IRequest<IActionResult>
     {
         public Guid ProductId { get; set; }
-        public IFormFile IFormFile{ get; set; }
+        public IFormFile IFormFile { get; set; }
     }
     public class CreateProductThumbnailCommandHandler : IRequestHandler<CreateProductThumbnailCommand, IActionResult>
     {

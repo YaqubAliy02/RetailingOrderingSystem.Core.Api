@@ -1,12 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
+﻿using System.Reflection;
+using Application.Abstraction;
+using Application.Mappings;
+using Application.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
-using System.Data;
-using Application.Mappings;
-using Application.Abstraction;
-using Application.Services;
+using Microsoft.Extensions.DependencyInjection;
 namespace Application
 {
     public static class RegisterServices

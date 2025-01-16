@@ -1,12 +1,10 @@
-﻿using System.Security.Claims;
-using Application.Abstraction;
+﻿using Application.Abstraction;
 using Application.Models;
 using Application.Repositories;
 using AutoMapper;
 using Domain.Models;
 using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 
 namespace Application.UserCases.Products.Command
 {

@@ -20,11 +20,11 @@ namespace Application.UserCases.Products.Command
 
         public async Task<IActionResult> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            bool isDeleted =  await productRepository.DeleteAsync(request.Id);
-             if(isDeleted)
-               return new OkObjectResult("Product deleted successfully");
+            bool isDeleted = await productRepository.DeleteAsync(request.Id);
+            if (isDeleted)
+                return new OkObjectResult("Product deleted successfully");
 
-             return new NotFoundObjectResult("Product not found");
+            return new NotFoundObjectResult("Product not found");
         }
     }
 }

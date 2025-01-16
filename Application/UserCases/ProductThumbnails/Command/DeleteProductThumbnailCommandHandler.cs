@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Application.UserCases.ProductThumbnails.Command
 {
-    public class DeleteProductThumbnailCommand: IRequest<IActionResult>
+    public class DeleteProductThumbnailCommand : IRequest<IActionResult>
     {
         public Guid Id { get; set; }
     }
@@ -19,8 +19,8 @@ namespace Application.UserCases.ProductThumbnails.Command
 
         public async Task<IActionResult> Handle(DeleteProductThumbnailCommand request, CancellationToken cancellationToken)
         {
-             bool result = await this.productThumbnailRepository.DeleteAsync(request.Id);
-            if(!result)
+            bool result = await this.productThumbnailRepository.DeleteAsync(request.Id);
+            if (!result)
                 return new NotFoundObjectResult("Delete operation is failed");
 
             return new OkObjectResult("Product Thumbnail deleted successfully");

@@ -40,7 +40,7 @@ namespace Application.Mappings
             CreateMap<Product, UpdateProductDTO>()
                 .ForMember(destination => destination.ThumbnailsId,
                 options => options.MapFrom(src => src.ProductThumbnails.Select(p => p.Id)))
-                .ForMember(destination => destination.CategoryId, 
+                .ForMember(destination => destination.CategoryId,
                 options => options.MapFrom(src => src.Category.Id)).ReverseMap();
 
             CreateMap<Product, GetProductDto>()

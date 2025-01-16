@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using Application.Abstraction;
 using Application.DTOs.Users;
-using Application.Models;
 using Application.Repositories;
 using AutoMapper;
 using Domain.Enums;
