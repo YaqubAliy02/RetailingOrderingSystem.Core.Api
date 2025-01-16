@@ -1,4 +1,5 @@
-﻿using Application.UserCases.Categories.Command;
+﻿using Application.UseCases.Categories.Query;
+using Application.UserCases.Categories.Command;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -38,6 +39,13 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         public async Task<IActionResult> UpdateCategoryByIdAsync([FromBody] UpdateCategoryCommand updateCategoryCommand)
         {
             return await this.mediator.Send(updateCategoryCommand);
+        }
+
+        [HttpGet("[action]")]
+        //[Authorize(Roles = "Admin, User")]
+        public async Task<IActionResult> GetAllCategories()
+        {
+            return await this.mediator.Send(new GetAllCategoriesQuery());
         }
     }
 }
