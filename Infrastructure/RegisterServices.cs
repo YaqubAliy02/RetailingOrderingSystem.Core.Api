@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Application.Abstraction;
 using Application.Repositories;
+using Application.Repository;
 using Infrastracture.Services;
 using Infrastructure.Data;
 using Infrastructure.External.AWSS3;
@@ -26,7 +27,7 @@ namespace Infrastructure
             services.AddScoped<IProductThumbnailRepository, ProductThumbnailRepository>();
             services.AddScoped<IAWSStorage, AWSStorage>();
             services.AddScoped<IUserRepository, UserRepository>();
-
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                .AddJwtBearer(options =>
                {

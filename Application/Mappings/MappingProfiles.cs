@@ -1,6 +1,7 @@
 ﻿using Application.DTOs.Products;
 using Application.DTOs.Users;
 using Application.UseCases.Accounts.Command;
+using Application.UseCases.Categories.Command;
 using Application.UseCases.Products.Command;
 using Application.UseCases.Users.Command;
 using Application.UserCases.Products.Command;
@@ -15,6 +16,13 @@ namespace Application.Mappings
         {
             ProductMappingRules();
             UserMappingRules();
+            CategoryMappingRules();
+        }
+
+        private void CategoryMappingRules()
+        {
+            CreateMap<CreateCategoryCommand, Category>();
+            CreateMap<Category, CreateCategoryCommandHandlerResult>();
         }
 
         private void UserMappingRules()
