@@ -24,5 +24,12 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
 
             return result.StatusCode == 200 ? Ok(result) : BadRequest(result);
         }
+
+        [HttpDelete("[action]")]
+       // [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteCategoryById([FromQuery] DeleteCategoryCommand deleteCategoryCommand)
+        {
+            return await this.mediator.Send(deleteCategoryCommand);
+        }
     }
 }
