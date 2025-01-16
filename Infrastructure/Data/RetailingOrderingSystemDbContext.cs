@@ -20,6 +20,7 @@ namespace Infrastructure.Data
        public DbSet<Order> Orders { get; set; }
        public DbSet<OrderDetail> OrderDetails { get; set; }
        public DbSet<ProductThumbnail> ProductThumbnails { get; set; }
+       public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +34,10 @@ namespace Infrastructure.Data
 
             modelBuilder.Entity<User>().HasIndex(option => option.Email).IsUnique();
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.Role) 
+                .HasConversion<string>();
         }
     }
 }

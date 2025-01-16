@@ -59,7 +59,6 @@ namespace Infrastructure.Services
 
         }
 
-
         public async Task<User> UpdateAsync(User user)
         {
             var existingUser = await GetByIdAsync(user.Id);
@@ -70,14 +69,13 @@ namespace Infrastructure.Services
                 existingUser.LastName = user.LastName;
                 existingUser.Email = user.Email;
 
-                existingUser.Roles.Clear();
-
-                foreach (var role in user.Roles)
+                if (Enum.IsDefined(typeof(Role), user.Role))
                 {
-                    if (Enum.IsDefined(typeof(Role), role))
-                    {
-                        existingUser.Roles.Add(role);
-                    }
+                    existingUser.Role = user.Role;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid role provided.");
                 }
 
                 await this.context.SaveChangesAsync();
@@ -86,6 +84,7 @@ namespace Infrastructure.Services
 
             return null;
         }
+
 
         public async Task UpdatePasswordAsync(User user)
         {

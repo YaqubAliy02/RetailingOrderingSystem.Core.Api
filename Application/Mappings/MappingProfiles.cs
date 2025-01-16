@@ -1,5 +1,7 @@
 ﻿using Application.DTOs.Products;
+using Application.DTOs.Users;
 using Application.UseCases.Products.Command;
+using Application.UseCases.Users.Command;
 using Application.UserCases.Products.Command;
 using AutoMapper;
 using Domain.Models;
@@ -11,6 +13,13 @@ namespace Application.Mappings
         public MappingProfiles()
         {
             ProductMappingRules();
+            UserMappingRules();
+        }
+
+        private void UserMappingRules()
+        {
+            CreateMap<RegisterUserCommand, User>();
+            CreateMap<User, UserGetDto>();
         }
 
         private void ProductMappingRules()

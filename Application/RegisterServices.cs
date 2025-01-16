@@ -5,6 +5,8 @@ using FluentValidation.AspNetCore;
 using MediatR;
 using System.Data;
 using Application.Mappings;
+using Application.Abstraction;
+using Application.Services;
 namespace Application
 {
     public static class RegisterServices
@@ -16,6 +18,7 @@ namespace Application
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
+            services.AddScoped<ITokenService, TokenService>();
             return services;
         }
     }

@@ -23,6 +23,7 @@ namespace Infrastructure
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductThumbnailRepository, ProductThumbnailRepository>();
             services.AddScoped<IAWSStorage, AWSStorage>();
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }
