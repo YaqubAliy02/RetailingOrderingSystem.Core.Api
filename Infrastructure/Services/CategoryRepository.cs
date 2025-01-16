@@ -62,6 +62,7 @@ namespace Infrastructure.Services
             if (existingCategory is not null)
             {
                 existingCategory.Name = category.Name;
+                existingCategory.Description = category.Description;
 
                 foreach (var product in existingCategory.Products)
                 {

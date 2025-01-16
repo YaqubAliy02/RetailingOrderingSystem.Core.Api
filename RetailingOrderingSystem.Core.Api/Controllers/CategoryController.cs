@@ -31,5 +31,13 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         {
             return await this.mediator.Send(deleteCategoryCommand);
         }
+
+
+        //[Authorize(Roles = "Admin")]
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateCategoryByIdAsync([FromBody] UpdateCategoryCommand updateCategoryCommand)
+        {
+            return await this.mediator.Send(updateCategoryCommand);
+        }
     }
 }
