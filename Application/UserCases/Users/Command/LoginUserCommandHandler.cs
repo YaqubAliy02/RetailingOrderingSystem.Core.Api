@@ -13,6 +13,7 @@ namespace Application.UseCases.Accounts.Command
 {
     public class LoginUserCommand : IRequest<IActionResult>
     {
+        [EmailAddress]
         public string Email { get; set; }
         [PasswordPropertyText]
         public string Password { get; set; }

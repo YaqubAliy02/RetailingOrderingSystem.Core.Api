@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.Products;
 using Application.DTOs.Users;
+using Application.UseCases.Accounts.Command;
 using Application.UseCases.Products.Command;
 using Application.UseCases.Users.Command;
 using Application.UserCases.Products.Command;
@@ -20,6 +21,7 @@ namespace Application.Mappings
         {
             CreateMap<RegisterUserCommand, User>();
             CreateMap<User, UserGetDto>();
+            CreateMap<ModifyUserCommand, User>();
         }
 
         private void ProductMappingRules()
