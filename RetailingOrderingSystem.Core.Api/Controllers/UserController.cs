@@ -1,4 +1,5 @@
 ﻿using Application.UseCases.Accounts.Command;
+using Application.UseCases.Accounts.Query;
 using Application.UseCases.Users.Command;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace RetailingOrderingSystem.Core.Api.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class UserController : ApiControllerBase
     {
         private IMediator mediator;
@@ -48,6 +49,13 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
             var result = await this.mediator.Send(refreshTokenCommand);
 
             return result.StatusCode == 200 ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpGet("[action]")]
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetAllUsersAsync()
+        {
+            return await this.mediator.Send(new GetAllUserQuery());
         }
     }
 }
