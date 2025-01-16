@@ -39,5 +39,15 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         {
             return await this.mediator.Send(updateUserCommand);
         }
+
+        [HttpPost]
+        [Route("RefreshUserToken")]
+        [AllowAnonymous]
+        public async Task<IActionResult> RefreshUserToken([FromBody] RefreshTokenCommand refreshTokenCommand)
+        {
+            var result = await this.mediator.Send(refreshTokenCommand);
+
+            return result.StatusCode == 200 ? Ok(result) : BadRequest(result);
+        }
     }
 }
