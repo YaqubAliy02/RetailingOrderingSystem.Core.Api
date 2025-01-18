@@ -5,7 +5,7 @@ using Domain.Models;
 using Infrastructure.External.AWSS3;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastracture.Services
+namespace Infrastracture.Repositories
 {
     public class ProductThumbnailRepository : IProductThumbnailRepository
     {

@@ -4,7 +4,7 @@ using Application.Repository;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Services
+namespace Infrastructure.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {

@@ -1,11 +1,13 @@
-﻿using Domain.Models;
+﻿using Application.DTOs.Order;
+using Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Repositories
 {
     public interface IOrderRepository
     {
-        Task<Order> CreateOrderAsync(Order order);
-        Task<Order> GetOrderByIdAsync(Guid orderId);
-        Task UpdateOrderStatusAsync(int orderId, string status);
+        Task<IQueryable<Order>> GetAllOrdersWithDetailsAsync();
+        Task<Order> GetOrderWithDetailsByIdAsync(Guid id);
     }
+
 }

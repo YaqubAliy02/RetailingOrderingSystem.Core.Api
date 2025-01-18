@@ -1,4 +1,6 @@
-﻿using Application.DTOs.Products;
+﻿using Application.DTOs.Order;
+using Application.DTOs.OrderDetail;
+using Application.DTOs.Products;
 using Application.DTOs.Users;
 using Application.UseCases.Accounts.Command;
 using Application.UseCases.Products.Command;
@@ -17,6 +19,13 @@ namespace Application.Mappings
             ProductMappingRules();
             UserMappingRules();
             CategoryMappingRules();
+            OrderMappingRules();
+        }
+
+        private void OrderMappingRules()
+        {
+            CreateMap<Order, OrderDto>();
+            CreateMap<OrderDetail, OrderDetailDto>();
         }
 
         private void CategoryMappingRules()

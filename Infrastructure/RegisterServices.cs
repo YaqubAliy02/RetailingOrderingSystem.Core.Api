@@ -2,9 +2,10 @@
 using Application.Abstraction;
 using Application.Repositories;
 using Application.Repository;
-using Infrastracture.Services;
+using Infrastracture.Repositories;
 using Infrastructure.Data;
 using Infrastructure.External.AWSS3;
+using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,9 @@ namespace Infrastructure
             services.AddScoped<IAWSStorage, AWSStorage>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                .AddJwtBearer(options =>
                {

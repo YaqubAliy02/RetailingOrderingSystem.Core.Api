@@ -8,6 +8,8 @@
         public DateTimeOffset OrderDate { get; set; }
         public decimal TotalAmount { get; set; }
         public string PaymentStatus { get; set; } = "Pending";
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public string Status { get; set; }
+        public string PaymentIntent { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
     }
 }

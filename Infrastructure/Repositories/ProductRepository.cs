@@ -4,7 +4,7 @@ using Application.Repositories;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Services
+namespace Infrastructure.Repositories
 {
     public class ProductRepository : IProductRepository
     {
@@ -30,9 +30,8 @@ namespace Infrastructure.Services
                 this.context.Products.Remove(product);
 
             int result = await this.context.SaveChangesAsync();
+
             return result > 0 ? true : false;
-
-
         }
 
         public async Task<IQueryable<Product>> GetAllAsync(Expression<Func<Product, bool>> expression)
@@ -64,6 +63,28 @@ namespace Infrastructure.Services
             var result = await this.context.SaveChangesAsync();
 
             return result > 0 ? product : null;
+        }
+
+        public async Task<bool> CheckStockAsync(Guid productId, int quantity)
+        {
+            var product = await this.context.Products.FirstOrDefaultAsync(p => p.Id == productId);
+            if (product == null)
+                throw new KeyNotFoundException($"Product with ID {productId} not found.");
+
+            return product.Stock >= quantity;
+        }
+
+        public async Task DeductStockAsync(Guid productId, int quantity)
+        {
+            var product = await this.context.Products.FirstOrDefaultAsync(p => p.Id == productId);
+            if (product == null)
+                throw new KeyNotFoundException($"Product with ID {productId} not found.");
+
+            if (product.Stock< quantity)
+                throw new InvalidOperationException("Insufficient stock available.");
+
+            product.Stock -= quantity;
+            await this.context.SaveChangesAsync();
         }
     }
 }
