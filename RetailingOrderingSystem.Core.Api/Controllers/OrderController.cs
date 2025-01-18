@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.Order;
-using Infrastructure.Services;
+using Infrastructure.Services.Orders;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,14 +18,14 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
 
         [HttpGet]
        // [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrders()
+        public async Task<ActionResult<IEnumerable<OrderDto>>> GetAllOrdersAsync()
         {
             var orders = await this.orderService.GetAllOrdersAsync();
             return Ok(orders);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<OrderDto>> GetOrderById(Guid id)
+        public async Task<ActionResult<OrderDto>> GetOrderByIdAsync(Guid id)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
 
         [HttpPut("{id}/status")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateOrderStatus(Guid id, [FromBody] string status)
+        public async Task<IActionResult> UpdateOrderStatusAsync(Guid id, [FromBody] string status)
         {
             try
             {
@@ -54,12 +54,12 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<ActionResult<OrderDto>> CreateOrder([FromBody] CreateOrderDto orderDto)
+        public async Task<ActionResult<OrderDto>> CreateOrderAsync([FromBody] CreateOrderDto orderDto)
         {
             try
             {
                 var createdOrder = await this.orderService.CreateOrderAsync(orderDto);
-                return CreatedAtAction(nameof(GetOrderById), new { id = createdOrder.UserId }, createdOrder);
+                return CreatedAtAction(nameof(GetOrderByIdAsync), new { id = createdOrder.UserId }, createdOrder);
             }
             catch (Exception ex)
             {

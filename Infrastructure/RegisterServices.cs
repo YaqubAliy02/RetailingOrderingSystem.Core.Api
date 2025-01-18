@@ -1,12 +1,14 @@
 ﻿using System.Text;
 using Application.Abstraction;
+using Application.Helpers;
 using Application.Repositories;
 using Application.Repository;
 using Infrastracture.Repositories;
 using Infrastructure.Data;
 using Infrastructure.External.AWSS3;
 using Infrastructure.Repositories;
-using Infrastructure.Services;
+using Infrastructure.Services.Orders;
+using Infrastructure.Services.Payments;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +33,9 @@ namespace Infrastructure
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.Configure<PaymentSettings>(configuration.GetSection("PaymentSettings"));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                .AddJwtBearer(options =>

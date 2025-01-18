@@ -1,7 +1,7 @@
 ﻿using Application.DTOs.Order;
 using Domain.Models;
 
-namespace Infrastructure.Services
+namespace Infrastructure.Services.Orders
 {
     public interface IOrderService
     {
