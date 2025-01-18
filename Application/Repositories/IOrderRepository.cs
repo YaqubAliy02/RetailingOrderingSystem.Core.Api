@@ -1,6 +1,4 @@
-﻿using Application.DTOs.Order;
-using Domain.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Domain.Models;
 
 namespace Application.Repositories
 {

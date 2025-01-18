@@ -80,7 +80,7 @@ namespace Infrastructure.Repositories
             if (product == null)
                 throw new KeyNotFoundException($"Product with ID {productId} not found.");
 
-            if (product.Stock< quantity)
+            if (product.Stock < quantity)
                 throw new InvalidOperationException("Insufficient stock available.");
 
             product.Stock -= quantity;

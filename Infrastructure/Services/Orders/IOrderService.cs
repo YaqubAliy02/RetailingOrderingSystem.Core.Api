@@ -1,5 +1,4 @@
 ﻿using Application.DTOs.Order;
-using Domain.Models;
 
 namespace Infrastructure.Services.Orders
 {

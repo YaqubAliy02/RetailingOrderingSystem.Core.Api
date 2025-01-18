@@ -1,6 +1,5 @@
 ﻿using Application.DTOs.Order;
 using Infrastructure.Services.Orders;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RetailingOrderingSystem.Core.Api.Controllers
@@ -17,7 +16,7 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
 
 
         [HttpGet]
-       // [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<OrderDto>>> GetAllOrdersAsync()
         {
             var orders = await this.orderService.GetAllOrdersAsync();

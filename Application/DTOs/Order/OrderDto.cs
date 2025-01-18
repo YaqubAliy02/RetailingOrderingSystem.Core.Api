@@ -1,5 +1,4 @@
 ﻿using Application.DTOs.OrderDetail;
-using Domain.Models;
 
 namespace Application.DTOs.Order
 {

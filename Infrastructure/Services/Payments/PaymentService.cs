@@ -1,7 +1,5 @@
 ﻿using Application.Abstraction;
 using Application.Helpers;
-using Application.Repositories;
-using Domain.Models;
 using Microsoft.Extensions.Options;
 using Stripe;
 

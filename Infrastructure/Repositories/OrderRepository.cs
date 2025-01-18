@@ -1,7 +1,6 @@
 ﻿using Application.Abstraction;
 using Application.Repositories;
 using Domain.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories

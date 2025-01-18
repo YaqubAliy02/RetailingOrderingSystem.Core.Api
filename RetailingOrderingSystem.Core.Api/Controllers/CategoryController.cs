@@ -1,7 +1,6 @@
 ﻿using Application.UseCases.Categories.Query;
 using Application.UserCases.Categories.Command;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RetailingOrderingSystem.Core.Api.Controllers
@@ -27,14 +26,14 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         }
 
         [HttpDelete("[action]")]
-       // [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteCategoryById([FromQuery] DeleteCategoryCommand deleteCategoryCommand)
         {
             return await this.mediator.Send(deleteCategoryCommand);
         }
 
         [HttpGet("[action]")]
-       // [Authorize(Roles = "Admin, User")]
+        // [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetCategoryByIdAsync([FromQuery] GetCategoryByIdQuery getCategoryByIdQuery)
         {
             return await this.mediator.Send(new GetCategoryByIdQuery { Id = getCategoryByIdQuery.Id });

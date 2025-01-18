@@ -3,8 +3,6 @@ using Application.DTOs.Order;
 using Application.Repositories;
 using AutoMapper;
 using Domain.Models;
-using Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Services.Orders
 {
