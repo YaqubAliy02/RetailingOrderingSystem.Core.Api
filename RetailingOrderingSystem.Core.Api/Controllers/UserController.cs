@@ -57,5 +57,12 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         {
             return await this.mediator.Send(new GetAllUserQuery());
         }
+
+        [HttpDelete("[action]")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteUserAsync([FromQuery] DeleteUserCommand deleteUserCommand)
+        {
+            return await this.mediator.Send(deleteUserCommand);
+        }
     }
 }
