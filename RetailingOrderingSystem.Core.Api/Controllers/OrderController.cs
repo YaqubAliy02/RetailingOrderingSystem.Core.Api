@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.Order;
 using Infrastructure.Services.Orders;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RetailingOrderingSystem.Core.Api.Controllers
@@ -16,7 +17,7 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
 
 
         [HttpGet]
-        // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<OrderDto>>> GetAllOrdersAsync()
         {
             var orders = await this.orderService.GetAllOrdersAsync();
@@ -24,6 +25,7 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult<OrderDto>> GetOrderByIdAsync(Guid id)
         {
             try
@@ -38,7 +40,7 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         }
 
         [HttpPut("{id}/status")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateOrderStatusAsync(Guid id, [FromBody] string status)
         {
             try
@@ -53,6 +55,7 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         }
 
         [HttpPost("[action]")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<ActionResult<OrderDto>> CreateOrderAsync([FromBody] CreateOrderDto orderDto)
         {
             try
@@ -67,7 +70,7 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteOrder(Guid id)
         {
             try

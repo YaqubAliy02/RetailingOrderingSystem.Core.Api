@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Services.Payments;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RetailingOrderingSystem.Core.Api.Controllers
@@ -13,6 +14,7 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         }
 
         [HttpPost("[action]")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> ProcessPaymentAsync(Guid orderId)
         {
             try

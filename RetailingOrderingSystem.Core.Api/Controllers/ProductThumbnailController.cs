@@ -1,5 +1,6 @@
 ﻿using Application.UserCases.ProductThumbnails.Command;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RetailingOrderingSystem.Core.Api.Controllers
@@ -15,12 +16,14 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         }
 
         [HttpPost("[action]")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UploadProductThumbnail([FromQuery] CreateProductThumbnailCommand command)
         {
             return await this.mediator.Send(command);
         }
 
         [HttpDelete("[action]")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteProductThumbnail([FromQuery] DeleteProductThumbnailCommand command)
         {
             return await this.mediator.Send(command);

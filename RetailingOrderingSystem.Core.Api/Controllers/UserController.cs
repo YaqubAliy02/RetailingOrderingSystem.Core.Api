@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace RetailingOrderingSystem.Core.Api.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class UserController : ApiControllerBase
     {
         private IMediator mediator;
@@ -52,7 +52,7 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
         }
 
         [HttpGet("[action]")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllUsersAsync()
         {
             return await this.mediator.Send(new GetAllUserQuery());
