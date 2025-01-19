@@ -58,6 +58,14 @@ namespace RetailingOrderingSystem.Core.Api.Controllers
             return await this.mediator.Send(new GetAllUserQuery());
         }
 
+
+        [HttpPut("[action]")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ChangeUserPasswordAsync([FromBody] ChangeUserPassword changeUserPassword)
+        {
+            return await this.mediator.Send(changeUserPassword);
+        }
+
         [HttpDelete("[action]")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUserAsync([FromQuery] DeleteUserCommand deleteUserCommand)
